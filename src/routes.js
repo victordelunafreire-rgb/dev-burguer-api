@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
 import CategoryController from './app/models/controllers/CategoryController.js';
+import OrderController from './app/models/controllers/OrderController.js';
 import ProductController from './app/models/controllers/ProductController.js';
 import SessionController from './app/models/controllers/SessionController.js';
 import UserController from './app/models/controllers/UserController.js';
@@ -43,5 +44,7 @@ routes.put(
   CategoryController.update,
 );
 routes.get('/categories', CategoryController.index);
+
+routes.post('/orders', adminMiddleware, OrderController.store);
 
 export default routes;

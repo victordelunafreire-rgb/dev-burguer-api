@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import * as Yup from 'yup';
-import authConfig from './../../../config/auth.js'
+import authConfig from './../../../config/auth.js';
 import User from '../user.js';
 
 class SessionController {
@@ -42,18 +42,24 @@ class SessionController {
       emailOrPasswordIncorrect();
     }
 
-    const token = jwt.sign({ id: existingUser.id, admin: existingUser.admin }, 
-      authConfig.secret, 
+    const token = jwt.sign(
       {
-      expiresIn: authConfig.expiresIn
-    })
+        id: existingUser.id,
+        admin: existingUser.admin,
+        name: existingUser.name,
+      },
+      authConfig.secret,
+      {
+        expiresIn: authConfig.expiresIn,
+      },
+    );
 
     return res.status(200).json({
       id: existingUser.id,
       name: existingUser.name,
       email: existingUser.email,
       admin: existingUser.admin,
-      token
+      token,
     });
   }
 }
