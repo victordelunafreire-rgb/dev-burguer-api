@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import Order from '../../schemas/Order.js';
 import Category from '../Category.js';
 import Product from '../Product.js';
 
@@ -61,7 +62,9 @@ class OrderController {
       status: 'Pedido realizado',
     };
 
-    return res.status(201).json(order);
+    const newOrder = await Order.create(order);
+
+    return res.status(201).json(newOrder);
   }
 }
 
