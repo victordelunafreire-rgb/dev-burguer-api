@@ -1,20 +1,20 @@
 import { Router } from 'express';
 import multer from 'multer';
+import adminMiddleware from './app/middlewares/admin.js';
+import authMiddleware from './app/middlewares/auth.js';
 import CategoryController from './app/models/controllers/CategoryController.js';
 import OrderController from './app/models/controllers/OrderController.js';
 import ProductController from './app/models/controllers/ProductController.js';
 import SessionController from './app/models/controllers/SessionController.js';
 import UserController from './app/models/controllers/UserController.js';
 import multerConfig from './config/multer.cjs';
-import adminMiddleware from './middlewares/admin.js';
-import authMiddleware from './middlewares/auth.js';
 
 const routes = new Router();
 
 const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
-routes.post('/session', SessionController.store);
+routes.post('/sessions', SessionController.store);
 
 routes.use(authMiddleware);
 routes.post(
