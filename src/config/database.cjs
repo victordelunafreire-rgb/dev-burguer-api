@@ -2,13 +2,13 @@ module.exports = {
   development: {
     dialect: 'postgres',
     host: 'localhost',
-    username: 'admin',
-    password: '191657',
-    database: 'dev-burguer-db',
+    username: 'postgres',
+    password: 'postgres',
+    database: 'devburguer',
     define: {
       timestamps: true,
       underscored: true,
-      underscoredAll: true
-    }
-  }
-}
+      underscoredAll: true,
+    },
+  },
+};
