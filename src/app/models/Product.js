@@ -11,10 +11,10 @@ class Product extends Model {
         category_id: Sequelize.INTEGER,
         url: {
           type: Sequelize.VIRTUAL,
-          get(){
-            return `http://localhost:3001/product-file/${this.path}`
-          }
-        }
+          get() {
+            return `http://localhost:3001/product-file/${this.path}`;
+          },
+        },
       },
       {
         sequelize,
@@ -22,14 +22,14 @@ class Product extends Model {
       },
     );
 
-    return this
+    return this;
   }
 
-  static associate(models){
+  static associate(models) {
     this.belongsTo(models.Category, {
       foreignKey: 'category_id',
-      as: 'category'
-    })
+      as: 'category',
+    });
   }
 }
 

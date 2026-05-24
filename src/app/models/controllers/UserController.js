@@ -30,7 +30,7 @@ class UserController {
       return res.status(409).json({ message: 'Email already taken!' });
     }
 
-    const password_hash = await bcrypt.hash(password, 10)
+    const password_hash = await bcrypt.hash(password, 10);
 
     const user = await User.create({
       id: v4(),

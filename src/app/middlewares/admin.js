@@ -1,11 +1,11 @@
 const adminMiddleware = (req, res, next) => {
-    const isUserAdmin = req.userIsAdmin
+  const isUserAdmin = req.userIsAdmin;
 
-    if (!isUserAdmin){
-     return res.status(401).json()   
-    }
+  if (!isUserAdmin) {
+    return res.status(401).json();
+  }
 
-    return next()
-}
+  return next();
+};
 
-export default adminMiddleware
+export default adminMiddleware;

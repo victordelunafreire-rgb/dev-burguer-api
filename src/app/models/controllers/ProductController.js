@@ -8,7 +8,7 @@ class ProductController {
       name: Yup.string().required(),
       price: Yup.number().required(),
       category_id: Yup.number().required(),
-      offer: Yup.boolean()
+      offer: Yup.boolean(),
     });
 
     try {
@@ -25,18 +25,18 @@ class ProductController {
       price,
       category_id,
       path: filename,
-      offer
+      offer,
     });
 
     return res.status(201).json({ newProduct });
   }
 
-    async update(req, res) {
+  async update(req, res) {
     const schema = Yup.object({
       name: Yup.string(),
       price: Yup.number(),
       category_id: Yup.number(),
-      offer: Yup.boolean()
+      offer: Yup.boolean(),
     });
 
     try {
@@ -46,36 +46,39 @@ class ProductController {
     }
 
     const { name, price, category_id, offer } = req.body;
-    const { id } = req.params
+    const { id } = req.params;
 
-    let path
-    if(req.file){
+    let path;
+    if (req.file) {
       const { filename } = req.file;
-      path = filename
+      path = filename;
     }
 
-    await Product.update({
-      name,
-      price,
-      category_id,
-      path,
-      offer
-    }, {
-      where: {
-        id,
-      }
-    });
+    await Product.update(
+      {
+        name,
+        price,
+        category_id,
+        path,
+        offer,
+      },
+      {
+        where: {
+          id,
+        },
+      },
+    );
 
-    return res.status(200).json()
+    return res.status(200).json();
   }
 
   async index(_req, res) {
     const products = await Product.findAll({
       include: {
-        model: Category, 
+        model: Category,
         as: 'category',
-        attributes: ['id', 'name']
-      }
+        attributes: ['id', 'name'],
+      },
     });
 
     return res.status(200).json(products);
