@@ -1,33 +1,41 @@
-# 🍔 DevBurguer - Frontend
+# 🍔 DevBurguer - Backend API
 
-DevBurguer is a complete full-stack web application for a burger restaurant. This repository contains the **Frontend** of the application, built to deliver a responsive, intuitive, and dynamic user experience.
+This repository contains the **Backend RESTful API** for the DevBurguer application. It serves as the single source of truth, handling data persistence, business logic, and secure communication with the frontend via JSON payloads.
 
 ## 🚀 Overview
-This interface was designed to handle real-world operations, consuming a RESTful API and rendering dynamic data. It processes **JSON** responses from the backend and translates them into a clean, user-friendly UI using modern **HTML/CSS** and React.
+Built with Node.js, this API is structured to be scalable and resilient. It manages the restaurant's operational data, processing requests and ensuring reliable data delivery to the client-side application.
 
 ### 🛠️ Built With
-* **React.js** (Functional Components, Hooks)
-* **JavaScript (ES6+)**
-* **HTML5 & CSS3** (Styled Components / Modules)
-* **Axios** (for API communication and JSON data handling)
-
-## 📸 Screenshots
-> 
+* **Node.js & Express**
+* **Database:** [PostgreSQL / MongoDB]
+* **Docker** (Containerization for consistent environments)
+* **CORS** configured for secure cross-origin requests
+* **JSON** for structured data exchange
 
 ## ⚙️ How to Run Locally
 
-To run this project on your local machine, make sure you have Node.js installed and the **DevBurguer Backend API** running.
+You can run this API using Docker (recommended) or directly via Node.js.
+
+### Prerequisites
+* Node.js installed
+* Docker installed (optional, but recommended)
+
+### Setup Steps
 
 1. Clone the repository:
-   `git clone https://github.com/seu-usuario/devburguer-frontend.git`
+   `git clone https://github.com/seu-usuario/devburguer-backend.git`
 
-2. Navigate to the project directory:
-   `cd devburguer-frontend`
+2. Navigate to the directory:
+   `cd devburguer-backend`
 
 3. Install dependencies:
    `npm install`
 
-4. Start the development server:
-   `npm run dev`
+4. Set up your environment variables:
+   Create a `.env` file in the root directory and add the required variables (e.g., `PORT`, `DATABASE_URL`). 
 
-The application will be available at `http://localhost:5173` (or the port specified in your terminal).
+5. Start the server:
+   `npm start`
+   *(If using Docker, run `docker-compose up -d` to spin up the environment).*
+
+The API will be listening on `http://localhost:3000` (or your configured port).
